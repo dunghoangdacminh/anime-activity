@@ -20,6 +20,7 @@ interface AnimeCardProps {
 }
 
 export default function AnimeCard({ anime, onClick }: AnimeCardProps) {
+  const port = import.meta.env.VITE_PORT;
   const handleClick = () => {
 	if (onClick) {
 	  onClick(anime.id)
@@ -34,7 +35,7 @@ export default function AnimeCard({ anime, onClick }: AnimeCardProps) {
 	  >
 		<div className="relative overflow-hidden rounded-md">
 		  <img
-			src={`http://localhost:${process.env.PORT}/api/proxy?url=${anime.poster}` || "/placeholder.svg"}
+			src={`http://localhost:${port}/api/proxy?url=${anime.poster}` || "/placeholder.svg"}
 			alt={anime.title}
 			className="w-full aspect-[3/4] object-cover transition-transform duration-300 group-hover:scale-105"
 		  />

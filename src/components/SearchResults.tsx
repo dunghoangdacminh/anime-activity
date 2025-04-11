@@ -26,6 +26,7 @@ export default function SearchResults({
 	totalPages,
 	onAnimeClick,
 }: SearchResultsProps) {
+	const port = import.meta.env.VITE_PORT;
 	const [currentPage, setCurrentPage] = useState(1)
 
 	const handleAnimeClick = (id: string) => {
@@ -105,7 +106,7 @@ export default function SearchResults({
 									<CardContent className="p-0 relative group cursor-pointer">
 										<div className="relative overflow-hidden rounded-md">
 											<img
-												src={`http://localhost:${process.env.PORT}/api/proxy?url=${anime.poster}` || "/placeholder.svg"}
+												src={`http://localhost:${port}/api/proxy?url=${anime.poster}` || "/placeholder.svg"}
 												alt={anime.title}
 												className="w-full aspect-[3/4] object-cover transition-transform duration-300 group-hover:scale-105"
 											/>

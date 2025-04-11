@@ -38,6 +38,7 @@ interface AnimeDetails {
 }
 
 export default function AnimeDetailsModal({ animeId, isOpen, onClose }: AnimeDetailsModalProps) {
+  const port = import.meta.env.VITE_PORT;
   const [animeDetails, setAnimeDetails] = useState<AnimeDetails | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -122,7 +123,7 @@ export default function AnimeDetailsModal({ animeId, isOpen, onClose }: AnimeDet
 				{/* Poster */}
 				<div className="w-full md:w-[200px] flex-shrink-0">
 				  <img
-					src={`http://localhost:${process.env.PORT}/api/proxy?url=${animeDetails.poster}` || "/placeholder.svg"}
+					src={`http://localhost:${port}/api/proxy?url=${animeDetails.poster}` || "/placeholder.svg"}
 					alt={animeDetails.title}
 					className="w-full md:w-[200px] h-auto rounded-md object-cover shadow-lg"
 				  />

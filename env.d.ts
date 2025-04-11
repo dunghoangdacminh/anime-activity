@@ -7,6 +7,7 @@ declare global {
       DISCORD_CLIENT_SECRET: string;
       NODE_OPTIONS: string;
       PORT: string;
+      VITE_PORT: string
     }
   }
 }

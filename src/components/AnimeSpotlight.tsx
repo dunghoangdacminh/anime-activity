@@ -43,7 +43,7 @@ export default function AnimeSpotlight({ spotlights }: AnimeSpotlightProps) {
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % spotlights.length)
   }
-
+  const port = import.meta.env.VITE_PORT;
   if (!spotlights || spotlights.length === 0) {
     return null
   }
@@ -56,7 +56,7 @@ export default function AnimeSpotlight({ spotlights }: AnimeSpotlightProps) {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(http://localhost:${process.env.PORT}/api/proxy?url=${currentSpotlight.poster})`,
+          backgroundImage: `url(http://localhost:${port}/api/proxy?url=${currentSpotlight.poster})`,
           backgroundPosition: "center 20%",
         }}
       >

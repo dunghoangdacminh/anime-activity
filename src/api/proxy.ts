@@ -1,3 +1,4 @@
+// proxy.ts
 import { RoboRequest } from "@robojs/server"
 
 export default async (request: RoboRequest) => {
@@ -5,19 +6,16 @@ export default async (request: RoboRequest) => {
 
 	const res = await fetch(targetUrl, {
 		headers: {
-			// Forward essential headers only
 			"User-Agent": request.headers.get("user-agent") || "",
-			// Avoid sending Accept-Encoding if you can't handle compressed responses
 			"Accept-Encoding": "identity"
 		}
 	})
 
-	const data = await res.text()
-
-	return new Response(data, {
+	return new Response(res.body, {
 		status: res.status,
 		headers: {
-			"Content-Type": res.headers.get("content-type") || "text/plain"
+			"Content-Type": res.headers.get("content-type") || "application/octet-stream",
+			"Cache-Control": "public, max-age=86400", // optional cache
 		}
 	})
 }
