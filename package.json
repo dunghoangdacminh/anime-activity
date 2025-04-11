@@ -30,7 +30,9 @@
 		"lint:style": "prettier --write .",
 		"start": "robox start",
 		"tunnel": ".robo/bin/cloudflared tunnel --url http://localhost:3000",
-		"upgrade": "sage upgrade"
+		"upgrade": "sage upgrade",
+		"check": "prettier config --check .",
+		"format": "prettier config --write ."
 	},
 	"dependencies": {
 		"@discord/embedded-app-sdk": "^1.4.3",
